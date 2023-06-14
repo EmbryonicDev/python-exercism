@@ -7,8 +7,7 @@ def get_coordinate(record):
     :param record: tuple - with a (treasure, coordinate) pair.
     :return: str - the extracted map coordinate.
     """
-
-    pass
+    return record[-1]
 
 
 def convert_coordinate(coordinate):
@@ -18,7 +17,7 @@ def convert_coordinate(coordinate):
     :return: tuple - the string coordinate split into its individual components.
     """
 
-    pass
+    return tuple(coordinate)
 
 
 def compare_records(azara_record, rui_record):
@@ -28,8 +27,7 @@ def compare_records(azara_record, rui_record):
     :param rui_record: tuple - a (location, tuple(coordinate_1, coordinate_2), quadrant) trio.
     :return: bool - do the coordinates match?
     """
-
-    pass
+    return azara_record[1] == rui_record[1][0] + rui_record[1][1]
 
 
 def create_record(azara_record, rui_record):
@@ -39,8 +37,9 @@ def create_record(azara_record, rui_record):
     :param rui_record: tuple - a (location, coordinate, quadrant) trio.
     :return: tuple or str - the combined record (if compatible), or the string "not a match" (if incompatible).
     """
-
-    pass
+    if compare_records(azara_record, rui_record):
+        return azara_record + rui_record
+    return "not a match"
 
 
 def clean_up(combined_record_group):
@@ -53,5 +52,31 @@ def clean_up(combined_record_group):
 
     (see HINTS.md for an example).
     """
+    result = ""
+    for record in combined_record_group:
+        # remove second value and add an enter
+        result += str(record[:1] + record[2:]) + "\n"
+    return result
 
-    pass
+
+print(
+    clean_up(
+        (
+            ("Brass Spyglass", "4B", "Abandoned Lighthouse", ("4", "B"), "Blue"),
+            (
+                "Vintage Pirate Hat",
+                "7E",
+                "Quiet Inlet (Island of Mystery)",
+                ("7", "E"),
+                "Orange",
+            ),
+            ("Crystal Crab", "6A", "Old Schooner", ("6", "A"), "Purple"),
+        )
+    )
+)
+
+"""
+    ('Brass Spyglass', 'Abandoned Lighthouse', ('4', 'B'), 'Blue')\n
+    ('Vintage Pirate Hat', 'Quiet Inlet (Island of Mystery)', ('7', 'E'), 'Orange')\n
+    ('Crystal Crab', 'Old Schooner', ('6', 'A'), 'Purple')\n
+"""
