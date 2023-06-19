@@ -7,7 +7,9 @@ from sets_categories_data import (VEGAN,
                                   PALEO,
                                   OMNIVORE,
                                   ALCOHOLS,
-                                  SPECIAL_INGREDIENTS)
+                                  SPECIAL_INGREDIENTS,
+                                  example_dishes,
+                                  EXAMPLE_INTERSECTION)
 
 
 def clean_ingredients(dish_name, dish_ingredients):
@@ -18,10 +20,11 @@ def clean_ingredients(dish_name, dish_ingredients):
     :return: tuple - containing (dish_name, ingredient set).
 
     This function should return a `tuple` with the name of the dish as the first item,
-    followed by the de-duped `set` of ingredients as the second item.
+    followed by the de-duped `set
+    ` of ingredients as the second item.
     """
+    return dish_name, set(dish_ingredients)
 
-    pass
 
 
 def check_drinks(drink_name, drink_ingredients):
@@ -35,8 +38,10 @@ def check_drinks(drink_name, drink_ingredients):
     name followed by "Cocktail" (includes alcohol).
 
     """
-
-    pass
+    drink_type = "Mocktail"
+    if set(drink_ingredients).intersection(ALCOHOLS):
+        drink_type = "Cocktail"
+    return f"{drink_name} {drink_type}"
 
 
 def categorize_dish(dish_name, dish_ingredients):
@@ -51,8 +56,17 @@ def categorize_dish(dish_name, dish_ingredients):
     All dishes will "fit" into one of the categories imported from `sets_categories_data.py`
 
     """
-
-    pass
+    dish_types = [VEGAN, VEGETARIAN, PALEO, KETO, OMNIVORE]
+    dish_types_strings = ['VEGAN', 'VEGETARIAN', 'PALEO', 'KETO', 'OMNIVORE']
+    
+    dish_types_dict = {}
+    # Create dict from lists
+    for i in range(len(dish_types)):
+        dish_types_dict[dish_types_strings[i]] = dish_types[i]
+    
+    for key, value in dish_types_dict.items():
+        if dish_ingredients <= value:
+            return f"{dish_name}: {key}"
 
 
 def tag_special_ingredients(dish):
@@ -65,8 +79,7 @@ def tag_special_ingredients(dish):
     For the purposes of this exercise, all allergens or special ingredients that need to be tracked are in the
     SPECIAL_INGREDIENTS constant imported from `sets_categories_data.py`.
     """
-
-    pass
+    return dish[0], set(SPECIAL_INGREDIENTS.intersection(dish[1]))
 
 
 def compile_ingredients(dishes):
@@ -77,8 +90,8 @@ def compile_ingredients(dishes):
 
     This function should return a `set` of all ingredients from all listed dishes.
     """
-
-    pass
+    set1, *rest = dishes
+    return set1.union(*rest)
 
 
 def separate_appetizers(dishes, appetizers):
@@ -91,8 +104,7 @@ def separate_appetizers(dishes, appetizers):
     The function should return the list of dish names with appetizer names removed.
     Either list could contain duplicates and may require de-duping.
     """
-
-    pass
+    return list(set(dishes).difference(appetizers))
 
 
 def singleton_ingredients(dishes, intersection):
@@ -108,6 +120,18 @@ def singleton_ingredients(dishes, intersection):
         (VEGAN, VEGETARIAN, PALEO, KETO, or OMNIVORE).
 
     The function should return a `set` of ingredients that only appear in a single dish.
-    """
-
-    pass
+    """         
+    all_ingredients = []
+    for dish in dishes:
+        for ingredient in dish:
+            all_ingredients.append(ingredient)
+    
+    single_ingredients = [x for x in all_ingredients if all_ingredients.count(x) == 1]
+    
+    singleton_ingredients = set()
+    for ingredient in single_ingredients:
+        if ingredient not in intersection:
+            singleton_ingredients.add(ingredient)
+    
+    return set(single_ingredients)
+        
