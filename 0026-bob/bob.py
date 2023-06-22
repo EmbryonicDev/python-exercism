@@ -12,8 +12,6 @@ def response(remark):
     if remark.endswith("?"):
         return "Sure."
     return "Whatever."
-
-    
     
 print(response("Does this cryogenic chamber make me look fat?"))
 print(response("FCECDF!CAAB"))
