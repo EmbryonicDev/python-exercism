@@ -10,14 +10,13 @@ def get_s_error():
 
 
 def calculator(current_answer, num, operator):
-    if operator == "plus":
-        return current_answer + num
-    if operator == "minus":
-        return current_answer - num
-    if operator == "multiplied":
-        return current_answer * num
-    if operator == "divided":
-        return current_answer / num
+    operations = {
+        "plus": lambda x, y: x + y,
+        "minus": lambda x, y: x - y,
+        "multiplied": lambda x, y: x * y,
+        "divided": lambda x, y: x / y,
+    }
+    return operations[operator](current_answer, num)
 
 
 def answer(question):
@@ -84,22 +83,12 @@ def answer(question):
         get_s_error()
 
     # calculate
-    final_answer = calculator(
-        calc_instructions[0], calc_instructions[2], calc_instructions[1]
-    )
-
-    # return answer for simple calc, or slice calculated items from q_list_extract
-    if len(calc_instructions) == 3:
-        return final_answer
-    else:
-        calc_instructions = calc_instructions[3:]
-
-    # keep updating final answer & slicing q_list_extract
+    # keep updating final answer & popping q_list_extract
+    final_answer = calc_instructions.pop(0)
     while calc_instructions:
         final_answer = calculator(
-            final_answer, calc_instructions[1], calc_instructions[0]
+            final_answer, calc_instructions.pop(1), calc_instructions.pop(0)
         )
-        calc_instructions = calc_instructions[2:]
 
     return final_answer
 
