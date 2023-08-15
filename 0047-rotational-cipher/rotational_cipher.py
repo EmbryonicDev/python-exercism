@@ -3,21 +3,13 @@ def rotate(text, key):
     answer = ""
 
     for letter in text:
-        letter_lower = letter.lower()
-
-        # add characters not in alpha
-        if letter_lower not in alpha:
+        if letter.lower() in alpha:
+            is_upper = letter.isupper()
+            index = (alpha.index(letter.lower()) + key) % 26
+            new_letter = alpha[index]
+            answer += new_letter.upper() if is_upper else new_letter
+        else:
             answer += letter
-            continue
-
-        # get index of converted letter
-        index = alpha.index(letter_lower)
-        for i in range(key):
-            index += 1
-            if index == 26:
-                index = 0
-
-        answer += alpha[index].upper() if letter.isupper() else alpha[index]
 
     return answer
 
