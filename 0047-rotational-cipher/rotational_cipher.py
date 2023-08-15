@@ -1,17 +1,24 @@
-def rotate(text, key):
+def rotate(text: str, key: int):
+    """
+    Rotates the text by the given key.
+
+    Returns:
+        str: The rotated text.
+    """
+
     alpha = "abcdefghijklmnopqrstuvwxyz"
-    answer = ""
 
-    for letter in text:
-        if letter.lower() in alpha:
-            is_upper = letter.isupper()
-            index = (alpha.index(letter.lower()) + key) % 26
-            new_letter = alpha[index]
-            answer += new_letter.upper() if is_upper else new_letter
-        else:
-            answer += letter
+    def rotate_letter(letter, key):
+        index = alpha.find(letter.lower())
+        if index == -1:
+            return letter
 
-    return answer
+        rotated_index = (index + key) % 26
+        return (
+            alpha[rotated_index].upper() if letter.isupper() else alpha[rotated_index]
+        )
+
+    return "".join(rotate_letter(letter, key) for letter in text)
 
 
 if __name__ == "__main__":
