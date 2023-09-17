@@ -22,17 +22,20 @@ class Luhn:
 
     def calculate_sum(self):
         sum_total = 0
+        # reverse card_num
         card_num_r = self.card_num[::-1]
 
         for i, char in enumerate(card_num_r):
             digit = int(char)
 
+            # every second index in reversed card_num
             if i % 2 != 0:
                 digit *= 2
                 if digit > 9:
                     sum_total += digit - 9
                 else:
                     sum_total += digit
+            # every even index in reversed card_num
             else:
                 sum_total += digit
 
