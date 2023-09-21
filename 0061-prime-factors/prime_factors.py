@@ -4,7 +4,7 @@ def factors(value):
     while factor <= value:
         if value == 1:
             break
-        if value % factor == 0:
+        elif value % factor == 0:
             prime_factors.append(factor)
             value /= factor
         else:
