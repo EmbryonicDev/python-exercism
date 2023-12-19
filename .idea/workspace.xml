@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e01385a1-c12f-458a-b863-3622d2abcf92" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0067-nth-prime/nth_prime.py" beforeDir="false" afterPath="$PROJECT_DIR$/0067-nth-prime/nth_prime.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +54,7 @@
       <workItem from="1702223734311" duration="6314000" />
       <workItem from="1702280402879" duration="8661000" />
       <workItem from="1702571825537" duration="533000" />
-      <workItem from="1702572376858" duration="18943000" />
+      <workItem from="1702572376858" duration="19542000" />
     </task>
     <task id="LOCAL-00001" summary="Complete exercise: acronym">
       <option name="closed" value="true" />
