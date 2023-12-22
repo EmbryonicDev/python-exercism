@@ -1,43 +1,26 @@
 def roman(number):
+    roman_chars = [
+        ('M', 1000),
+        ('CM', 900),
+        ('D', 500),
+        ('CD', 400),
+        ('C', 100),
+        ('XC', 90),
+        ('L', 50),
+        ('XL', 40),
+        ('X', 10),
+        ('IX', 9),
+        ('V', 5),
+        ('IV', 4),
+        ('I', 1),
+    ]
+
     roman_num = ''
-    index_str = str(number).rjust(4, "0")
-    num_list = [int(num) for num in index_str]
 
-    def reduce(num, subtract):
-        return num - subtract
-
-    def translator(num, roman_chars):
-        add_str = ''
-        char_1, char_2, char_3 = (char for char in roman_chars)
-
-        while True:
-            if num < 1:
-                break
-            if num >= 9:
-                add_str += char_1 + char_3
-                num = reduce(num, 9)
-            elif num >= 5:
-                add_str += char_2
-                num = reduce(num, 5)
-            elif num >= 4:
-                add_str += char_1 + char_2
-                num = reduce(num, 4)
-            elif num >= 1:
-                add_str += char_1
-                num = reduce(num, 1)
-        return add_str
-
-    thousands = int(num_list.pop(0))
-    roman_num += thousands * 'M'
-
-    for chars in ['CDM', 'XLC', 'IVX']:
-        """
-        100 / 500 / 1000 CDM
-        10 / 50 / 100 XLC
-        1 / 5 / 10 IVX
-        """
-        number = int(num_list.pop(0))
-        roman_num += translator(number, chars)
+    for char, value in roman_chars:
+        while number >= value:
+            roman_num += char
+            number -= value
 
     return roman_num
 
