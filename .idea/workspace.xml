@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e01385a1-c12f-458a-b863-3622d2abcf92" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0070-word-count/word_count.py" beforeDir="false" afterPath="$PROJECT_DIR$/0070-word-count/word_count.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0071-scrabble-score/scrabble_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/0071-scrabble-score/scrabble_score.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +57,7 @@
       <workItem from="1702571825537" duration="533000" />
       <workItem from="1702572376858" duration="27374000" />
       <workItem from="1704719446423" duration="1699000" />
-      <workItem from="1704721164984" duration="1625000" />
+      <workItem from="1704721164984" duration="2045000" />
     </task>
     <task id="LOCAL-00001" summary="Complete exercise: acronym">
       <option name="closed" value="true" />
